@@ -1,0 +1,24 @@
+cbc_final AS
+(SELECT
+ie.stay_id,
+le.*,
+ROW_NUMBER () OVER (PARTITION BY ie.stay_id ORDER BY le.charttime) as le_seq
+FROM `physionet-data.mimic_icu.icustays` ie
+LEFT JOIN `physionet-data.mimic_derived.complete_blood_count` le
+ON le.subject_id = ie.subject_id
+),
+
+cbc_first AS
+(
+SELECT
+ie.subject_id,
+ie.stay_id,
+hematocrit,
+hemoglobin,
+platelet,
+wbc
+FROM `physionet-data.mimic_icu.icustays` ie
+LEFT JOIN cbc_final cf
+ON ie.stay_id = cf.stay_id
+AND cf.le_seq = 1
+),
