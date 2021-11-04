@@ -1,0 +1,30 @@
+WITH 
+vital_final AS
+(SELECT
+vital.*, 
+ROW_NUMBER () OVER (PARTITION BY vital.stay_id ORDER BY vital.charttime) as vf_seq
+FROM `physionet-data.mimic_derived.vitalsign` vital
+),
+
+vital_first AS
+(
+SELECT
+ie.subject_id,
+ie.stay_id,
+heart_rate,
+sbp,
+dbp,
+mbp,
+sbp_ni,
+dbp_ni,
+mbp_ni,
+resp_rate,
+temperature,
+temperature_site,
+spo2,
+glucose
+FROM `physionet-data.mimic_icu.icustays` ie
+LEFT JOIN vital_final vf
+ON ie.stay_id = vf.stay_id
+AND vf.vf_seq = 1
+),
