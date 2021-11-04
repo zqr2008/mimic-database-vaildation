@@ -1,0 +1,23 @@
+WITH 
+gcs_final AS
+(SELECT
+gcs.*,
+ ROW_NUMBER () OVER (PARTITION BY gcs.stay_id ORDER BY gcs.charttime) as gcs_seq
+ FROM `physionet-data.mimic_derived.gcs` gcs
+),
+
+gcs_first AS 
+(
+SELECT
+ie.subject_id,
+ie.stay_id,
+gcs AS gcs_first,
+gcs_motor,
+gcs_verbal,
+gcs_eyes,
+gcs_unable
+FROM `physionet-data.mimic_icu.icustays` ie
+LEFT JOIN gcs_final gs
+ON ie.stay_id = gs.stay_id
+AND gs.gcs_seq = 1
+),
