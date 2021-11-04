@@ -1,0 +1,42 @@
+art_final AS
+(
+SELECT
+ie.subject_id,
+ie.stay_id,
+bg.*,
+ROW_NUMBER () OVER (PARTITION BY ie.stay_id ORDER BY bg.charttime) as le_seq
+FROM `physionet-data.mimic_icu.icustays` ie
+LEFT JOIN `physionet-data.mimic_derived.bg` bg
+ON ie.subject_id = bg.subject_id
+),
+
+art_first AS
+(SELECT
+ie.subject_id,
+ie.stay_id,
+lactate,
+ph,
+so2,
+po2,
+pco2,
+aado2,
+aado2_calc,
+pao2fio2ratio,
+baseexcess,
+bicarbonate,
+totalco2,
+hematocrit,
+hemoglobin,
+carboxyhemoglobin,
+methemoglobin,
+temperature,
+chloride,
+calcium,
+glucose,
+potassium,
+sodium
+FROM `physionet-data.mimic_icu.icustays` ie
+LEFT JOIN art_final af
+ON ie.stay_id = af.stay_id
+AND af.le_seq = 1
+),
