@@ -1,5 +1,4 @@
-
-```
+```ruby
 vital_final AS
 (SELECT
 vital.*, 
@@ -19,7 +18,7 @@ FIRST_VALUE(spo2) OVER ( PARTITION BY vital.stay_id ORDER BY
 
 FROM `physionet-data.mimic_derived.vitalsign` vital
 ),
-``` 
+```
 
 vital_first AS
 (
