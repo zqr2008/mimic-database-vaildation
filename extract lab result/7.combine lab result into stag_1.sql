@@ -71,3 +71,5 @@ ON icu.stay_id=art.stay_id
 )
 WHERE chart_order=1 AND admission_age>=16
 ),
+
+SELECT * FROM stag_1
