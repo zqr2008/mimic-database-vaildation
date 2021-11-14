@@ -6,13 +6,14 @@
 --                         5.first blood gas in ICU.sql
 --                         6.first enzyme in ICU.sql
 -- All six queries can be found at https://github.com/zqr2008/mimic-database-vaildation/tree/main/extract%20lab%20result
+-- Please note that unit were converted when generating stag_1 for Chinese hospital habit
 -- (creatinine*88.4) to obtain creatinine in 'μmol/L'
 -- (bun/2.80) to obtain bun in 'mmol/L',
 -- (glucose/18) to obtain glucose in 'mmol/L',
 -- (hemoglobin*10) to obtain hemoglobin in 'g/L'
 -- (bilirubin_total*17.1) to obtain bilirubin_total in 'umol/L'
 -- (heart_rate/sbp) to obtain shock index
-```note that unit were converted when generating stag_1 for Chinese hospital habit```
+
 
 
 stag_1 AS
