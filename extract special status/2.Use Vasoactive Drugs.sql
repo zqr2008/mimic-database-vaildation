@@ -1,7 +1,9 @@
--- ------------------------------------------------------------------
+-- --------------------------------------------------------------------------------------------------------------------------------------------
 -- This query(Use_Vasoactive_Drugs_1) extracts whether the patient used vasoactive drugs(including dobutamine,dopamine,epinephrine
--- norepinephrine,phenylephrine,vasopressin)
--- ------------------------------------------------------------------
+-- norepinephrine,phenylephrine,vasopressin);
+-- Using vasoactive drugs were restricted to 6 hours within admission time;
+-- The query is based on `physionet-data.mimic_icu.inputevents` ;
+-- --------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -28,6 +30,7 @@ Use_Vasoactive_Drugs_2 AS
 (
 SELECT 
 stag_1.subject_id,
+  
     CASE WHEN rate IS NOT NULL AND starttime<= DATETIME_ADD(stag_1.admittime,  INTERVAL '6' hour)
     THEN 1 ELSE 0
     END AS Use_Vasoactive_Drugs
