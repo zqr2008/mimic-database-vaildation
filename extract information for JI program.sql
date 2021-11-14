@@ -2,6 +2,8 @@
 -- This query extracts information matches JI program information;
 -- It is the same order as to provide machine learning validation;
 -- Note here coalesce() function was used to make sure vital signs are as first as possiable;
+-- Time_interval=1 was required as to restrict the patient was record in the same stay and the patient did not stay at emergency department; 
+-- for a longtime. Chart_order_final=1 was required to make sure that each patient was only recorded once and evaluated at first time; 
 -- --------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -103,4 +105,4 @@ bilirubin_total	IS NOT NULL AND
 xiuke_first IS NOT NULL AND 
 gcs IS NOT NULL AND 
 coalesce(o2sat,so2) IS NOT NULL AND
-o2_flow IS NOT NULL
+o2_flow IS NOT NULL;
