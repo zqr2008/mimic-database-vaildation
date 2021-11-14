@@ -1,6 +1,6 @@
 -- The aim of this query is to extract first GCS during each stay(defined by stay_id)
--- The query is based on `physionet-data.mimic_derived.gcs` ,
--- visit:https://github.com/zqr2008/mimic-code/blob/main/mimic-iv/concepts/measurement/gcs.sqldetails of how the derived terms are defined 
+-- The query is based on `physionet-data.mimic_derived.gcs` 
+-- detail of how vitalsign were extract: https://github.com/zqr2008/mimic-code/blob/main/mimic-iv/concepts/measurement/gcs.sql
 
 WITH gcs_final AS
 (SELECT
