@@ -20,5 +20,3 @@ row_number() over (PARTITION by chief.subject_id ORDER BY emergecny_intime) AS c
 
  FROM chief INNER JOIN stag_2 ON stag_2.subject_idd=chief.subject_id
 )
-
-
