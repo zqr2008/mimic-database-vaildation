@@ -1,13 +1,7 @@
 -- ------------------------------------------------------------------
 -- This query extracts first oxygen status based on the mimic_derived.oxygen_delivery
 -- Converted into O2_DEVICE_FIRST that match code in JI program 
--- code for mimic_derived.oxygen_delivery: https://github.com/zqr2008/mimic-code/blob/main/mimic-iv/concepts/treatment/ventilation.sql
--- O2_DEVICE_FIRST：
--- NASAL CANNULE:0   Oxygen
--- NONE(ROOM AIR):0
--- OXYGEN MASK:1
--- VENTILATOR:3  NonInvasiveVent;Trach;InvasiveVent
--- VENTURI MASK:2  HighFlow
+-- code for mimic_derived.oxygen_delivery: https://github.com/zqr2008/mimic-code/blob/main/mimic-iv/concepts/measurement/oxygen_delivery.sql
 -- ------------------------------------------------------------------
 
 oxygen_1 AS
