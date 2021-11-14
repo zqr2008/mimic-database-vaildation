@@ -10,9 +10,7 @@
 -- ------------------------------------------------------------------
 
 vent_1 AS
-
-(
-SELECT * FROM
+(SELECT * FROM
 (SELECT 
 stay_id,
 starttime,
