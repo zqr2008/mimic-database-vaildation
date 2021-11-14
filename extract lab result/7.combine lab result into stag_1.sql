@@ -12,7 +12,7 @@
 -- (hemoglobin*10) to obtain hemoglobin in 'g/L'
 -- (bilirubin_total*17.1) to obtain bilirubin_total in 'umol/L'
 -- (heart_rate/sbp) to obtain shock index
-***Note
+```note that unit were converted when generating stag_1 for Chinese hospital habit```
 
 
 stag_1 AS
