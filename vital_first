@@ -1,5 +1,5 @@
  
- ```sql
+```sql
 vital_final AS
 (SELECT
 vital.*, 
