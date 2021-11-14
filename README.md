@@ -20,6 +20,11 @@ Critically ill patients have complex clinical data, many predictive variables, a
 of different machine learning methods applied to emergency critical patient risk prediction systems, we have introduced accuracy (ACC), sensitivity
 (Sen), specificity (Spe), Jordan index and receiver operating characteristic curve (ROC) Area under the curve (AUC) These indicators are used to
 measure the performance of each model. The final performance of the model is as follows:
+![image](https://user-images.githubusercontent.com/73268508/141684023-dde6ba64-14f4-4782-9dcc-456c4955f987.png)
+
+
+It is already published at https://www.nature.com/articles/s41598-020-77548-3
+
 
 ## What this repo do:
 This repo extracts all 75 matching variables in mimic database, as to provide the vaildation of EIRAS,
@@ -28,9 +33,14 @@ reson is that mimic focus on ICU stays, EIRAS focus on ED stays. Even when mimic
 information to extract. Most of variables had to be taken from icu core.
 
 Even so, the performance is not all bad:
+![output](https://user-images.githubusercontent.com/73268508/141684089-e91b246e-2efe-4b55-8997-3fd069408c12.png)
 
-proving EIRAS model is 
 
+That shows EIRAS model is a reliable tool! 
+
+
+## The following is the description of 75 variables:
+-------------------------------------------------- ---------------------
 #### Provide information description:
 #### 1. The comment does not need to appear at the end.
 #### 2. '-' represents a sub-question, which will only appear when the superior question selects "Yes", otherwise the default is "No".
