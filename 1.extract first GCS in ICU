@@ -1,5 +1,5 @@
 
-```ruby
+~~~ruby
 WITH gcs_final AS
 (SELECT
 gc.*,
@@ -21,4 +21,4 @@ LEFT JOIN gcs_final gs
 ON ie.stay_id = gs.stay_id
 AND gs.gcs_seq = 1
 ),
-```
+~~~
