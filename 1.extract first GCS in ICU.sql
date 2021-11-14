@@ -1,6 +1,6 @@
 
 
-   ```sql
+```sql
 WITH gcs_final AS
 (SELECT
 gc.*,
@@ -24,5 +24,4 @@ AND gs.gcs_seq = 1
 )
 
 SELECT * FROM gcs_first 
-
-   ```
+```
