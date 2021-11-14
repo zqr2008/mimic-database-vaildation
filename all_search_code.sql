@@ -1,4 +1,3 @@
-
 WITH gcs_final AS
 (SELECT
 gc.*,
@@ -182,9 +181,7 @@ AND ef.le_seq = 1
 ),
 
 stag_1 AS
-
-(
-SELECT * FROM 
+(SELECT * FROM 
 (SELECT 
 art.subject_id AS subject_id,
 icu.hadm_id AS hadm_id,
@@ -324,21 +321,7 @@ FROM `physionet-data.mimic_derived.ventilator_setting` setting
 ) WHERE chart_order=1
 ),
 
-fio2_2 AS 
-(SELECT 
-stag_1.subject_id  AS subject_id,
- 
-         CASE WHEN fio2 IS NOT NULL 
-         THEN  fio2
-         ELSE  29 END AS backup_fio2
-
-FROM fio2_1
-RIGHT JOIN stag_1 
-ON stag_1.stay_id =fio2_1.stay_id
-),
-
-
-fio2_3 AS
+fio2_2 AS
 (SELECT 
 oxygen_1.subject_id  AS subject_id,
 oxygen_1.stay_id AS stay_id,
@@ -375,13 +358,13 @@ FROM oxygen_1 FULL JOIN fio2_1 on oxygen_1.stay_id=fio2_1.stay_id
 ),
 
 
-fio2_4 AS 
+fio2_3 AS 
 (SELECT 
-fio2_3.subject_id  AS subject_id,
+fio2_2.subject_id  AS subject_id,
 fio2_FIRST AS fio2
-FROM fio2_3 
+FROM fio2_2 
 RIGHT JOIN stag_1 
-ON stag_1.stay_id =fio2_3.stay_id
+ON stag_1.stay_id =fio2_2.stay_id
 ),
 -- ------------------------------------------------------------------
 -- This query extracts comorbidity based on the recorded ICD-9 and ICD-10 codes.
@@ -888,12 +871,12 @@ stag_2 AS
 (SELECT 
 stag_1.subject_id AS subject_idd,
 stag_1.admittime AS admittimee,
+stag_1.*,
 ad.*,
 com.*,
-stag_1.*,
 vent_2.*,
 oxygen_2.*,
-fio2_4.*,
+fio2_3.*,
 infection_2.*,
 Use_Vasoactive_Drugs_2.*,
 arrhythmia_2.*,
@@ -912,8 +895,8 @@ INNER JOIN vent_2
 ON stag_1.subject_id  =vent_2.subject_id
 INNER JOIN oxygen_2  
 ON stag_1.subject_id  =oxygen_2.subject_id
-INNER JOIN fio2_4 
-ON stag_1.subject_id  =fio2_4.subject_id
+INNER JOIN fio2_3 
+ON stag_1.subject_id  =fio2_3.subject_id
 INNER JOIN infection_2 
 ON stag_1.subject_id =infection_2.subject_id 
 INNER JOIN Use_Vasoactive_Drugs_2
@@ -922,10 +905,10 @@ INNER JOIN arrhythmia_2
 ON stag_1.subject_id =arrhythmia_2.subject_id
 ),
 
-cheif AS (
+chief AS (
 SELECT 
-cheif.subject_id AS subject_id,
-cheif.stay_id AS stay_id,
+chief.subject_id AS subject_id,
+chief.stay_id AS stay_id,
 intime AS emergecny_intime,
 chiefcomplaint,
 heartrate,
@@ -971,9 +954,9 @@ CASE WHEN UPPER (chiefcomplaint) LIKE UPPER ('%vomit%') OR
           UPPER (chiefcomplaint) LIKE UPPER('%N/V%')  THEN 1 
      ELSE 0 END AS vomit
 
-FROM `physionet-data.mimic_ed.triage` cheif 
+FROM `physionet-data.mimic_ed.triage` chief 
 INNER JOIN `physionet-data.mimic_ed.edstays` edstay 
-ON edstay.stay_id=cheif.stay_id
+ON edstay.stay_id=chief.stay_id
 WHERE chiefcomplaint IS NOT NULL
 ),
 
@@ -981,9 +964,9 @@ stag_3 AS
 (
 SELECT 
 admission_age AS age,
-cheif.*,
+chief.*,
 stag_2.*,
-row_number() over (PARTITION by cheif.subject_id ORDER BY emergecny_intime) AS chart_order_final,
+row_number() over (PARTITION by chief.subject_id ORDER BY emergecny_intime) AS chart_order_final,
 
     CASE WHEN admittimee<= DATETIME_ADD(emergecny_intime, INTERVAL '1' day)
     THEN 1 ELSE 0
@@ -993,7 +976,7 @@ row_number() over (PARTITION by cheif.subject_id ORDER BY emergecny_intime) AS c
     THEN 1 ELSE 0
     END AS Planed_Admit_ERD,
 
- FROM cheif INNER JOIN stag_2 ON stag_2.subject_idd=cheif.subject_id
+ FROM chief INNER JOIN stag_2 ON stag_2.subject_idd=chief.subject_id
 )
 
 
@@ -1096,5 +1079,3 @@ xiuke_first IS NOT NULL AND
 gcs IS NOT NULL AND 
 coalesce(o2sat,so2) IS NOT NULL AND
 o2_flow IS NOT NULL
-
-
