@@ -5,10 +5,10 @@
 
 
 
-cheif AS (
+chief AS (
 SELECT 
-cheif.subject_id AS subject_id,
-cheif.stay_id AS stay_id,
+chief.subject_id AS subject_id,
+chief.stay_id AS stay_id,
 intime AS emergecny_intime,
 chiefcomplaint,
 heartrate,
@@ -54,8 +54,8 @@ CASE WHEN UPPER (chiefcomplaint) LIKE UPPER ('%vomit%') OR
           UPPER (chiefcomplaint) LIKE UPPER('%N/V%')  THEN 1 
      ELSE 0 END AS vomit
 
-FROM `physionet-data.mimic_ed.triage` cheif 
+FROM `physionet-data.mimic_ed.triage` chief 
 INNER JOIN `physionet-data.mimic_ed.edstays` edstay 
-ON edstay.stay_id=cheif.stay_id
+ON edstay.stay_id=chief.stay_id
 WHERE chiefcomplaint IS NOT NULL
 ),
