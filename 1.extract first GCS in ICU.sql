@@ -1,5 +1,4 @@
 
-
 ```sql
 WITH gcs_final AS
 (SELECT
