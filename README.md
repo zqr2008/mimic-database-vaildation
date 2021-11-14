@@ -1,91 +1,91 @@
-## 提供信息说明：
-#### 1.第一个冒号前为变量名字，冒号以后为label，第二个冒号以后为变量定义和类型。
-#### 2. 注释最后不用出现。
-#### 3. - 代表为子问题，只有上级问题选“是”才会出现，不然默认“否”。
-#### 4.最后输出 7天内死亡概率，7天内是否死亡，预测把握度。
------------------------------------------------------------------------
-###### 第一部分：基础信息   此部分问题除第一个问题AGE外，其他症状问题做成多选形式，如不填默认为0                      
-###### AGE：年龄（年）：（整数）
-###### chest pain：是否有胸痛：（是：1，否：0）                           
-###### abdominal pain：是否有腹痛：（是：1，否：0）                       
-###### Chest tightness：是否有胸部不适（紧缩感等）：（是：1，否：0）        
-###### dyspnea：是否有呼吸困难：（是：1，否：0）
-###### fever：是否有发热：（是：1，否：0）                                             
-###### syncope：是否有晕厥：（是：1，否：0）
-###### fatigue：是否有乏力：（是：1，否：0）
-###### palpitation：是否有心悸：（是：1，否：0）
-###### Hematemesis：是否有呕血：（是：1，否：0）
-###### Bloody stools：是否有呕血：（是：1，否：0）
-###### Altered mental status：是否有意识改变：（是：1，否：0）
-###### headache：是否有头痛：（是：1，否：0）
-###### vomiting：是否有呕吐：（是：1，否：0）
------------------------------------------------------------------------
-###### 第二部分：诊断大类(包括既往和此次)  此部分做成多选形式，如不填默认为0       
-###### TRAUMA_YN：是否有创伤：（是：1，否：0）
-###### DISCH_DX_RESP：是否有呼吸系统疾病（除外流感、肺炎和慢性呼吸系统疾病）：（是：1，否：0）
-###### DISCH_DX_INJURY：是否有外因所致疾病（包括外伤、中毒、中暑、溺水）：（是：1，否：0）
-###### DISCH_DX_NEOPLASMS：是否为肿瘤：（是：1，否：0）  #该题为以下四个问题的上级问题#
-###### -Cancer_Therapy：是否接受肿瘤治疗：（是：1，否：0）	
-###### -ACTIVE_MALIGNANCY	：是否为活动性肿瘤：（是：1，否：0）	
-###### -Hematologic cancer：是否为血液系统肿瘤：（是：1，否：0）	
-###### -Metastatic cancer：是否有转移瘤：（是：1，否：0）	
-###### DISCH_DX_ABNORMAL_NOS：是否有不能归入ICD编码的异常症状、体征、化验室异常（无法归类的）：（是：1，否：0）	
-###### DISCH_DX_CEREBROVASC：是否有脑血管疾病：（是：1，否：0）	
-###### DISCH_DX_FLU_PNEUMONIA：是否有流感/肺炎：（是：1，否：0）	
-###### DISCH_DX_CHRONIC_LOWER_RESP：是否有慢性下呼吸道疾病：（是：1，否：0）	
-###### DISCH_DX_CIRC_DISEASE：是否有循环系统疾病：（是：1，否：0）	 该题为以下1个问题的上级问题
-###### -chronic heart failureIV：是否有慢性心衰（NYHA IV）：（是：1，否：0）	
-###### DISCH_DX_DIGESTIVE_DISEASE：是否有消化系统疾病：（是：1，否：0）	 该题为以下1个问题的上级问题
-######  -Cirrhosis：是否有肝硬化：（是：1，否：0）
-###### DISCH_DX_GU_DISEASE：是否有泌尿生殖系统疾病：（是：1，否：0）
-###### DISCH_DX_OTHER_DISEASE：是否有其他不能归类的诊断：（是：1，否：0）
-###### STEROID_THERAPY：是否正在接受激素治疗：（是：1，否：0）
-###### DISCH_DX_AIDS：是否有艾滋病：（是：1，否：0）
-###### Infection：是否有院内感染：（是：1，否：0）
-###### Use_Vasoactive_Drugs：是否用静脉血管活性药物：（是：1，否：0）
-###### Planed_Admit_ERD：是否有计划入抢救室或ICU：（是：1，否：0）
------------------------------------------------------------------------
-###### 第三部分：细节诊断(入抢救室或ICU主要原因) 此部分做成多选形式，如不填默认为0    
-###### ?arrhythmia：心律失常是否是入抢救室主要原因：（是：1，否：0）
-###### Hypovolemic_hemorrhagic_shock：失血性休克是否是入抢救室主要原因：（是：1，否：0）
-###### Hypovolemic_non-hemorrhagic_shock：非失血性低血容量休克是否是入抢救室主要原因：（是：1，否：0）
-###### Septic_shock：感染性休克是否是入抢救室主要原因：（是：1，否：0）	
-###### Anaphylactic_shock：过敏性休克是否是入抢救室主要原因：（是：1，否：0）	
-###### Mix_shoch：混合性或未定型的休克是否是入抢救室主要原因：（是：1，否：0）	
-###### Live_failure：肝衰竭是否是入抢救室主要原因：（是：1，否：0）	
-###### Seizures：癫痫是否是入抢救室主要原因：（是：1，否：0）	
-###### coma：昏迷是否是入抢救室主要原因：（是：1，否：0）
-###### stupor：神志恍惚是否是入抢救室主要原因：（是：1，否：0）	
-###### obtunded：迟钝是否是入抢救室主要原因：（是：1，否：0）		
-###### Agitation：易激惹是否是入抢救室主要原因：（是：1，否：0）		
-###### Vigilance disturbance：过度兴奋是否是入抢救室主要原因：（是：1，否：0）	
-###### Confusion：谵妄是否是入抢救室主要原因：（是：1，否：0）			
-###### Focal_neurologic_deficit：局灶性功能障碍是否是入抢救室主要原因：（是：1，否：0）			
-###### Intracranial_effect：颅内占位效应是否是入抢救室主要原因：（是：1，否：0）		
-###### Acute_Abdomen：急腹症是否是入抢救室主要原因：（是：1，否：0）		
-###### SAP：急性重症胰腺炎是否是入抢救室主要原因：（是：1，否：0）		
------------------------------------------------------------------------
-###### 第四部分：体检数据
-###### GCS_FIRST:GCS评分：（数值型）	
-###### RR_FIRST：呼吸频率（单位次/分）：（数值型）	
-###### HR_FIRST：心率（单位次/分）：（数值型）	
-###### SBP_FIRST：收缩压（单位mmHg）：（数值型）	
-###### SpO2_FIRST：氧饱和度（单位%）：（数值型）	
-###### FiO2_FIRST：吸氧浓度（单位%）：（数值型）	
-###### O2_DEVICE_FIRST：供氧装置：（鼻导管:0，室内空气:0，氧气面罩:1，文丘里面罩（或其他高流量吸氧装置）:2，呼吸机:3）	
-###### O2_FLOW_RATE_FIRST：氧流量（单位L/min）：（数值型）		
------------------------------------------------------------------------
-###### 第五部###### 分：实验室数据
-###### PH_FIRST：酸碱度(pH)：（数值型）	
-###### PO2_FIRST:氧分压(PO2,单位mmHg)：（数值型）		
-###### WBC：白细胞(WBC,单位10^9/L)：（数值型）		
-###### CREATININE_UMOL/L：肌酐(Cr,单位umol/L)：（数值型）		
-###### POTASSIUM：血钾(K+,单位mmol/L)：（数值型）			
-###### SODIUM：血钠(K+,单位mmol/L)：（数值型）			
-###### BUN_MMOL/L：尿素氮(BUN,单位mmol/L)：（数值型）	
-###### GLUCOSE：血糖(Glu,单位mmol/L)：（数值型）	
-###### HGB：血红蛋白(Hgb,单位g/L)：（数值型）	
-###### PLT：血小板(PLT,单位10^9/L)：（数值型）	
-###### TBIL：总胆红素(TBIL,umol/L)：（数值型）	
-###### xiuke_first：此项目无需填写，由自动计算得出，计算公式为，HR_FIRST/SBP_FIRST
------------------------------------------------------------------------
+## Provide information description:
+#### 1. Before the first colon is the variable name, after the colon is the label, and after the second colon is the variable definition and type.
+#### 2. The comment does not need to appear at the end.
+#### 3.-Represents a sub-question, which will only appear when the superior question selects "Yes", otherwise the default is "No".
+#### 4. The final output is the probability of death within 7 days, whether it will die within 7 days, and predict the power.
+-------------------------------------------------- ---------------------
+###### Part One: Basic Information Except for the first question AGE, other symptom questions in this part are made into multiple-choice form, if not filled in, the default is 0
+###### AGE: Age (years): (integer)
+###### chest pain: whether there is chest pain: (yes: 1, no: 0)
+###### abdominal pain: whether there is abdominal pain: (yes: 1, no: 0)
+###### Chest tightness: Whether there is chest discomfort (tightening, etc.): (Yes: 1, No: 0)
+###### dyspnea: Do you have breathing difficulties: (Yes: 1, No: 0)
+###### fever: Is there any fever: (Yes: 1, No: 0)
+###### syncope: Is there syncope: (Yes: 1, No: 0)
+###### fatigue: whether there is fatigue: (yes: 1, no: 0)
+###### palpitation: Is there any palpitations: (Yes: 1, No: 0)
+###### Hematemesis: Is there hematemesis: (Yes: 1, No: 0)
+###### Bloody stools: Is there hematemesis: (Yes: 1, No: 0)
+###### Altered mental status: Is there any conscious change: (Yes: 1, No: 0)
+###### headache: Do you have a headache: (Yes: 1, No: 0)
+###### vomiting: Is there vomiting: (Yes: 1, No: 0)
+-------------------------------------------------- ---------------------
+###### Part 2: Diagnosis categories (including the past and this time) This part is made into a multiple-choice form, if not filled in, the default is 0
+###### TRAUMA_YN: Whether there is trauma: (Yes: 1, No: 0)
+###### DISCH_DX_RESP: Are there any respiratory diseases (except influenza, pneumonia and chronic respiratory diseases): (Yes: 1, No: 0)
+###### DISCH_DX_INJURY: Whether there are diseases caused by external factors (including trauma, poisoning, heatstroke, drowning): (Yes: 1, No: 0)
+###### DISCH_DX_NEOPLASMS: Is it a tumor: (Yes: 1, No: 0) # This title is the superior question of the following four questions#
+###### -Cancer_Therapy: Whether to accept cancer treatment: (Yes: 1, No: 0)
+###### -ACTIVE_MALIGNANCY: Whether it is an active tumor: (Yes: 1, No: 0)
+###### -Hematologic cancer: Whether it is a blood system tumor: (Yes: 1, No: 0)
+###### -Metastatic cancer: Whether there is metastatic cancer: (Yes: 1, No: 0)
+###### DISCH_DX_ABNORMAL_NOS: Are there any abnormal symptoms, signs, laboratory abnormalities that cannot be classified into ICD codes (unclassified): (Yes: 1, No: 0)
+###### DISCH_DX_CEREBROVASC: Is there a cerebrovascular disease: (Yes: 1, No: 0)
+###### DISCH_DX_FLU_PNEUMONIA: Is there flu/pneumonia: (Yes: 1, No: 0)
+###### DISCH_DX_CHRONIC_LOWER_RESP: Is there any chronic lower respiratory tract disease: (Yes: 1, No: 0)
+###### DISCH_DX_CIRC_DISEASE: Is there a circulatory system disease: (Yes: 1, No: 0) This question is the superior question of the following 1 question
+###### -chronic heart failure IV: Whether there is chronic heart failure (NYHA IV): (Yes: 1, No: 0)
+###### DISCH_DX_DIGESTIVE_DISEASE: Is there a digestive system disease: (Yes: 1, No: 0) This question is the superior question of the following 1 question
+###### -Cirrhosis: Is there cirrhosis of the liver: (Yes: 1, No: 0)
+###### DISCH_DX_GU_DISEASE: Is there any genitourinary system disease: (Yes: 1, No: 0)
+###### DISCH_DX_OTHER_DISEASE: Are there other diagnoses that cannot be classified: (Yes: 1, No: 0)
+###### STEROID_THERAPY: Are you receiving hormone therapy: (Yes: 1, No: 0)
+###### DISCH_DX_AIDS: Is there AIDS: (Yes: 1, No: 0)
+###### Infection: Whether there is nosocomial infection: (Yes: 1, No: 0)
+###### Use_Vasoactive_Drugs: Whether to use intravenous vasoactive drugs: (Yes: 1, No: 0)
+###### Planed_Admit_ERD: Is there a plan to enter the rescue room or ICU: (Yes: 1, No: 0)
+-------------------------------------------------- ---------------------
+###### Part 3: Detailed diagnosis (the main reason for entering the rescue room or ICU) This part is made into a multiple-choice form, if not filled in, the default is 0
+###### ?arrhythmia: Whether arrhythmia is the main reason for entering the emergency room: (Yes: 1, No: 0)
+###### Hypovolemic_hemorrhagic_shock: Is hemorrhagic shock the main reason for entering the emergency room: (Yes: 1, No: 0)
+###### Hypovolemic_non-hemorrhagic_shock: Whether non-hemorrhagic hypovolemic shock is the main reason for entering the emergency room: (Yes: 1, No: 0)
+###### Septic_shock: Is septic shock the main reason for entering the rescue room: (Yes: 1, No: 0)
+###### Anaphylactic_shock: Is anaphylactic shock the main reason for entering the emergency room: (Yes: 1, No: 0)
+###### Mix_shoch: Whether mixed or unfinished shock is the main reason for entering the emergency room: (Yes: 1, No: 0)
+###### Live_failure: Whether liver failure is the main reason for entering the rescue room: (Yes: 1, No: 0)
+###### Seizures: Is epilepsy the main reason for entering the emergency room: (Yes: 1, No: 0)
+###### coma: Whether the coma is the main reason for entering the rescue room: (Yes: 1, No: 0)
+###### stupor: Is the main reason for entering the rescue room for being stupefied: (Yes: 1, No: 0)
+###### obtunded: Is the slowness the main reason for entering the rescue room: (Yes: 1, No: 0)
+###### Agitation: Is irritability the main reason for entering the rescue room: (Yes: 1, No: 0)
+###### Vigilance disturbance: Is excessive excitement the main reason for entering the rescue room: (Yes: 1, No: 0)
+###### Confusion: Whether delirium is the main reason for entering the rescue room: (Yes: 1, No: 0)
+###### Focal_neurologic_deficit: Is focal dysfunction the main reason for entering the emergency room: (Yes: 1, No: 0)
+###### Intracranial_effect: Whether the intracranial space effect is the main reason for entering the rescue room: (Yes: 1, No: 0)
+###### Acute_Abdomen: Whether acute abdomen is the main reason for entering the emergency room: (Yes: 1, No: 0)
+###### SAP: Is acute severe pancreatitis the main reason for entering the emergency room: (Yes: 1, No: 0)
+-------------------------------------------------- ---------------------
+###### Part Four: Physical Examination Data
+###### GCS_FIRST: GCS score: (numerical)
+###### RR_FIRST: Respiratory rate (unit times/min): (numerical type)
+###### HR_FIRST: Heart rate (unit beats/min): (numerical type)
+###### SBP_FIRST: systolic blood pressure (unit mmHg): (numerical type)
+###### SpO2_FIRST: oxygen saturation (unit %): (numerical type)
+###### FiO2_FIRST: oxygen absorption concentration (unit %): (numerical type)
+###### O2_DEVICE_FIRST: oxygen supply device: (nasal catheter: 0, room air: 0, oxygen mask: 1, Venturi inner mask (or other high-flow oxygen inhalation device): 2, ventilator: 3)
+###### O2_FLOW_RATE_FIRST: Oxygen flow rate (unit L/min): (numerical type)
+-------------------------------------------------- ---------------------
+###### Fifth Division###### Points: Laboratory Data
+###### PH_FIRST: pH (pH): (numerical type)
+###### PO2_FIRST: Oxygen partial pressure (PO2, unit mmHg): (numerical type)
+###### WBC: White blood cell (WBC, unit 10^9/L): (numerical type)
+###### CREATININE_UMOL/L: Creatinine (Cr, unit umol/L): (Numerical)
+###### POTASSIUM: Serum potassium (K+, unit mmol/L): (numerical type)
+###### SODIUM: blood sodium (K+, unit mmol/L): (numerical type)
+###### BUN_MMOL/L: Urea nitrogen (BUN, unit mmol/L): (numerical type)
+###### GLUCOSE: blood sugar (Glu, unit mmol/L): (numerical type)
+###### HGB: Hemoglobin (Hgb, unit g/L): (numerical type)
+###### PLT: Platelet (PLT, unit 10^9/L): (numerical type)
+###### TBIL: total bilirubin (TBIL, umol/L): (numerical type)
+###### xiuke_first: This item does not need to be filled in, it is automatically calculated, and the calculation formula is HR_FIRST/SBP_FIRST
+-------------------------------------------------- --------------------- 
