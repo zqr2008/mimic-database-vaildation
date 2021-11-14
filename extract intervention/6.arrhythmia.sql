@@ -1,6 +1,6 @@
 -- ------------------------------------------------------------------
 -- This query(arrhythmia) extracts arrhythmia status, patients with SR (Sinus Rhythm) OR NULL record are label as normal (0), 
--- all other rhythms are consider as arrhythmia(1).
+-- all other rhythms are consider as arrhythmia(1);
 -- detail of how gcs were extracted: https://github.com/zqr2008/mimic-code/blob/main/mimic-iv/concepts/measurement/rhythm.sql
 -- ------------------------------------------------------------------
 
