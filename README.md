@@ -1,6 +1,6 @@
 ## Provide information description:
 #### 1. The comment does not need to appear at the end.
-#### 2.-Represents a sub-question, which will only appear when the superior question selects "Yes", otherwise the default is "No".
+#### 2. '-' represents a sub-question, which will only appear when the superior question selects "Yes", otherwise the default is "No".
 #### 3. The final output is the probability of death within 7 days, whether it will die within 7 days, and predict the power.
 -------------------------------------------------- ---------------------
 ###### Part One: Basic Information Except for the first question AGE, other symptom questions in this part are made into multiple-choice form, if not filled in, the default is 0
