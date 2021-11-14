@@ -16,7 +16,7 @@
 
 
 
-stag_1 AS
+WITH stag_1 AS
 (SELECT * FROM 
 (SELECT 
 art.subject_id AS subject_id,
@@ -70,6 +70,6 @@ INNER JOIN `physionet-data.mimic_derived.icustay_detail` icu
 ON icu.stay_id=art.stay_id
 )
 WHERE chart_order=1 AND admission_age>=16
-),
+)
 
 SELECT * FROM stag_1
