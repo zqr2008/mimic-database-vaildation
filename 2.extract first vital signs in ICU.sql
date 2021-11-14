@@ -1,6 +1,6 @@
 -- The aim of this query is to extract first vital signs during each stay(defined by stay_id)
 -- The query is based on `physionet-data.mimic_derived.vitalsign` 
--- detail of how vitalsign were extract: https://github.com/zqr2008/mimic-code/blob/main/mimic-iv/concepts/measurement/vitalsign.sql  
+-- detail of how vitalsign were extracted: https://github.com/zqr2008/mimic-code/blob/main/mimic-iv/concepts/measurement/vitalsign.sql  
 
 WITH vital_final AS
 (SELECT
