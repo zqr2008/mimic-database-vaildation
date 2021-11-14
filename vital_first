@@ -18,7 +18,6 @@ FIRST_VALUE(spo2) OVER ( PARTITION BY vital.stay_id ORDER BY
 
 FROM `physionet-data.mimic_derived.vitalsign` vital
 ),
-```
 
 vital_first AS
 (
@@ -34,3 +33,5 @@ LEFT JOIN vital_final vf
 ON ie.stay_id = vf.stay_id
 AND vf.vf_seq = 1
 ),
+
+```
