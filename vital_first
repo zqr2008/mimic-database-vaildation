@@ -1,4 +1,4 @@
-```
+`
 
 vital_final AS
 (SELECT
@@ -35,4 +35,4 @@ ON ie.stay_id = vf.stay_id
 AND vf.vf_seq = 1
 ),
 
-```
+`
