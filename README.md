@@ -22,7 +22,14 @@ of different machine learning methods applied to emergency critical patient risk
 measure the performance of each model. The final performance of the model is as follows:
 
 ## What this repo do:
+This repo extracts all 75 matching variables in mimic database, as to provide the vaildation of EIRAS,
+Note that this extracting stragey is very different from what EIRAS extract, even we tried to make the concept as similar as possible, one major 
+reson is that mimic focus on ICU stays, EIRAS focus on ED stays. Even when mimic research group published the mimic-ed,there is still few
+information to extract. Most of variables had to be taken from icu core.
 
+Even so, the performance is not all bad:
+
+proving EIRAS model is 
 
 #### Provide information description:
 #### 1. The comment does not need to appear at the end.
