@@ -1,4 +1,30 @@
-## Provide information description:
+
+
+
+
+## Background:
+a major challenge to collaborative multicenter research in emergency critical care is the lack of validated tools to risk-adjust outcomes. The
+absence of such tools is fundamental barrier to comparing outcomes at baseline and in response to experimental interventions at different
+institutions due to potential difference in case mix. The overall goal of this research collaboration is to develop a clinical research platform
+that will facilitate future multicenter interventional clinical trials in the emergency critical care setting. The specific goal of JI program
+is to derive and validate a outcome predictive model for predicting 7-day mortality of patients treated.
+
+## What we have done:
+we built a predictive model call EIRAS using data in emergency department from China(2 large hospitals).
+In the variable screening link of the EIRAS model, the research team specified a data collection plan after repeated discussions, made a unified
+case report form, repeated discussions and unified data collection procedures. The setting of the research data collection content refers to the
+variables included in the authoritative scores of foreign emergency medicine and critical care medicine (such as DAVROS, SAPS3 scores). Through
+data collection and integration and data preprocessing operations, we have obtained a database containing 75 patient sign data with the survival
+rate of emergency critical patients within seven days as the prediction target.
+Critically ill patients have complex clinical data, many predictive variables, and complex interactions.In order to better measure the performance
+of different machine learning methods applied to emergency critical patient risk prediction systems, we have introduced accuracy (ACC), sensitivity
+(Sen), specificity (Spe), Jordan index and receiver operating characteristic curve (ROC) Area under the curve (AUC) These indicators are used to
+measure the performance of each model. The final performance of the model is as follows:
+
+## What this repo do:
+
+
+#### Provide information description:
 #### 1. The comment does not need to appear at the end.
 #### 2. '-' represents a sub-question, which will only appear when the superior question selects "Yes", otherwise the default is "No".
 #### 3. The final output is the probability of death within 7 days, whether it will die within 7 days, and predict the power.
