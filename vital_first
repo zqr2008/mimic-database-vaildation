@@ -1,4 +1,5 @@
-```ruby
+```
+
 vital_final AS
 (SELECT
 vital.*, 
