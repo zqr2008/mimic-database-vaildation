@@ -7,6 +7,7 @@
 -- OXYGEN MASK:1
 -- VENTILATOR:3  NonInvasiveVent;Trach;InvasiveVent
 -- VENTURI MASK:2  HighFlow
+-- code for mimic_derived.oxygen_delivery: https://github.com/zqr2008/mimic-code/blob/main/mimic-iv/concepts/treatment/ventilation.sql
 -- ------------------------------------------------------------------
 
 vent_1 AS
