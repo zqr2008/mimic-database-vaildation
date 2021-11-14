@@ -1,6 +1,6 @@
 -- The aim of this query is to extract first chemistry during each stay(defined by stay_id)
 -- The query is based on `physionet-data.mimic_derived.chemistry` 
--- detail of how vitalsign were extracted: https://github.com/zqr2008/mimic-code/blob/main/mimic-iv/concepts/measurement/chemistry.sql
+-- detail of how chemistry were extracted: https://github.com/zqr2008/mimic-code/blob/main/mimic-iv/concepts/measurement/chemistry.sql
 
 WITH chem_final AS
 (SELECT
