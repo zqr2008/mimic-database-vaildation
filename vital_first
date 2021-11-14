@@ -18,7 +18,7 @@
 
 FROM `physionet-data.mimic_derived.vitalsign` vital
 ),
-
+> ```
 >vital_first AS
 >(
 >SELECT
