@@ -1,6 +1,6 @@
--- The aim of this query is to extract in-hospital infection status, 1 for infection, 0 for no infection
--- The query is based on `physionet-data.mimic_derived.suspicion_of_infection` 
--- in-hospital infection was defined as suspected_infection_time more than 48 hour late of admission time
+-- The aim of this query is to extract in-hospital infection status, 1 for infection, 0 for no infection;
+-- The query is based on `physionet-data.mimic_derived.suspicion_of_infection` ;
+-- in-hospital infection was defined as suspected_infection_time more than 48 hour late of admission time;
 -- detail of how gcs were extracted: https://github.com/zqr2008/mimic-code/blob/main/mimic-iv/concepts/sepsis/suspicion_of_infection.sql
 
 
