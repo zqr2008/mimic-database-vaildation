@@ -1,4 +1,4 @@
-```ruby
+
 WITH gcs_final AS
 (SELECT
 gc.*,
@@ -1096,4 +1096,5 @@ xiuke_first IS NOT NULL AND
 gcs IS NOT NULL AND 
 coalesce(o2sat,so2) IS NOT NULL AND
 o2_flow IS NOT NULL
-```
+
+
