@@ -1,5 +1,5 @@
 
-~~~ruby
+```
 WITH gcs_final AS
 (SELECT
 gc.*,
@@ -20,5 +20,8 @@ FROM `physionet-data.mimic_icu.icustays` ie
 LEFT JOIN gcs_final gs
 ON ie.stay_id = gs.stay_id
 AND gs.gcs_seq = 1
-),
-~~~
+)
+
+SELECT * FROM gcs_first 
+
+```
