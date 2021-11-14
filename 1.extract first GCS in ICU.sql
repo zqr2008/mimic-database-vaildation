@@ -1,6 +1,6 @@
 -- The aim of this query is to extract first GCS during each stay(defined by stay_id)
 -- The query is based on `physionet-data.mimic_derived.gcs` ,
-visit:https://github.com/zqr2008/mimic-code/blob/main/mimic-iv/concepts/measurement/gcs.sqldetails of how the derived terms are defined 
+-- visit:https://github.com/zqr2008/mimic-code/blob/main/mimic-iv/concepts/measurement/gcs.sqldetails of how the derived terms are defined 
 
 WITH gcs_final AS
 (SELECT
@@ -24,5 +24,4 @@ ON ie.stay_id = gs.stay_id
 AND gs.gcs_seq = 1
 )
 
-SELECT * FROM gcs_first 
-
+SELECT * FROM gcs_first;
