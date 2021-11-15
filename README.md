@@ -10,7 +10,7 @@ that will facilitate future multicenter interventional clinical trials in the em
 is to derive and validate a outcome predictive model for predicting 7-day mortality of patients treated.
 
 ## What we have done:
-we built a predictive model call EIRAS using data in emergency department from China(2 large hospitals).
+We built a predictive model call EIRAS using data in emergency department from China(2 large hospitals).
 In the variable screening link of the EIRAS model, the research team specified a data collection plan after repeated discussions, made a unified
 case report form, repeated discussions and unified data collection procedures. The setting of the research data collection content refers to the
 variables included in the authoritative scores of foreign emergency medicine and critical care medicine (such as DAVROS, SAPS3 scores). Through
@@ -30,9 +30,7 @@ It is already published at https://www.nature.com/articles/s41598-020-77548-3
 This repo extracts all 75 matching variables in mimic database, as to provide the vaildation of EIRAS,
 Note that this extracting stragey is very different from what EIRAS extract, even we tried to make the concept as similar as possible, one major 
 reson is that mimic focus on ICU stays, EIRAS focus on ED stays. Even when mimic research group published the mimic-ed,there is still few
-information to extract. Most of variables had to be taken from icu core.
-
-Even so, the performance is not all bad:
+information to extract. Most of variables had to be taken from icu core. Even so, the performance is not all bad:
 ![output](https://user-images.githubusercontent.com/73268508/141684089-e91b246e-2efe-4b55-8997-3fd069408c12.png)
 
 
